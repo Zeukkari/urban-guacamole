@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  server:
+    image: gitea/gitea:1.14.6-rootless
+    restart: always
+    volumes:
+      - ./data:/home/oh2cgq/Devaus/docker/gitea/var/lib/gitea
+      - ./config:/home/oh2cgq/Devaus/docker/gitea/etc/gitea
+      - /etc/timezone:/home/oh2cgq/Devaus/docker/gitea/etc/timezone:ro
+      - /etc/localtime:/home/oh2cgq/Devaus/docker/gitea/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "2222:2222"
+    environment:
+      - ROOT_URL=http://localhost:8080/gitea
